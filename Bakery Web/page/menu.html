@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="css/menu.css">
+
+<div class="grid">
+    <form action="" method="POST" class="form-menu">
+        <h4 name="name">Egg Sandwich</h4>
+        <center>
+            <img class="img-fluid" src="img/breakfast-1.jpg" alt="" width="250px" height="250px">
+        </center>
+        <h4 name="price">Rp 12.000</h4>
+        <center>
+            <button class="minus" type="button">-</button>
+            <input type="text" name="quantity" id="" value="1" class="count">
+            <button class="plus" type="button">+</button><br>
+        </center>
+        <button class="add-to-cart" data-item-id="1">Add to Cart</button>
+    </form>
+
+<form action="" method="POST" class="form-menu">
+    <h4 name="name">Steak</h4>
+    <center> <img class="img-fluid" src="img/steak.jpg" alt="" width="250px" height="250px"></center>
+    <h4 name="price">Rp 24.000</h4>
+    <center> <button class="minus" type="button">-</button>
+    <input type="text" name="quantity" id="" value="1" class="count" >
+    <button class="plus" type="button">+</button><br> </center>
+    <button class="add-to-cart" data-item-id="2">Add to Cart</button>
+</form>
+
+<form action="" method="POST" class="form-menu">
+    <h4 name="name">Salmon Zucchini</h4>
+    <center> <img class="img-fluid" src="img/salmon-zucchini.jpg" alt="" width="250px" height="250px"></center>
+    <h4 name="price">Rp 41.000</h4>
+    <center> <button class="minus" type="button">-</button>
+    <input type="text" name="quantity" id="" value="1" class="count" >
+    <button class="plus" type="button">+</button><br> </center>
+    <button class="add-to-cart" data-item-id="3">Add to Cart</button>
+</form>
+
+<!-- <form action="" method="POST" class="form-menu">
+    <h4 name="name">Egg Sadwich</h4>
+    <center> <img class="img-fluid" src="img/breakfast-1.jpg" alt="" width="250px" height="250px"></center>
+    <h4 name="price">Rp 12.000</h4>
+    <center> <button class="minus" type="button">-</button>
+    <input type="text" name="quantity" id="" value="1" class="count" >
+    <button class="plus" type="button">+</button><br> </center>
+    <button class="add-to-cart" data-item-id="3">Add to Cart</button>
+</form>
+
+<form action="" method="POST" class="form-menu">
+    <h4 name="name">Egg Sadwich</h4>
+    <center> <img class="img-fluid" src="img/breakfast-1.jpg" alt="" width="250px" height="250px"></center>
+    <h4 name="price">Rp 12.000</h4>
+    <center> <button class="minus" type="button">-</button>
+    <input type="text" name="quantity" id="" value="1" class="count" >
+    <button class="plus" type="button">+</button><br> </center>
+    <button class="add-to-cart" data-item-id="4">Add to Cart</button>
+</form>
+
+<form action="" method="POST" class="form-menu">
+    <h4 name="name">Egg Sadwich</h4>
+    <center> <img class="img-fluid" src="img/breakfast-1.jpg" alt="" width="250px" height="250px"></center>
+    <h4 name="price">Rp 12.000</h4>
+    <center> <button class="minus" type="button">-</button>
+    <input type="text" name="quantity" id="" value="1" class="count" >
+    <button class="plus" type="button">+</button><br> </center>
+    <button class="add-to-cart" data-item-id="5">Add to Cart</button>
+</form> -->
+<div class="response-container"></div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const plusBtn = document.querySelectorAll(".plus");
+        const minusBtn = document.querySelectorAll(".minus");
+        const countInput = document.querySelectorAll(".count");
+
+        plusBtn.forEach(button => {
+            button.addEventListener("click", function() {
+                const input = this.parentElement.querySelector(".count");
+                input.value = parseInt(input.value) + 1;
+            });
+        });
+
+        minusBtn.forEach(button => {
+            button.addEventListener("click", function() {
+                const input = this.parentElement.querySelector(".count");
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+        });
+
+        const addToCartBtns = document.querySelectorAll(".add-to-cart");
+        addToCartBtns.forEach(button => {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                const itemId = this.getAttribute('data-item-id');
+                const quantity = parseInt(this.parentElement.querySelector(".count").value);
+
+                fetch('menu.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ itemId, quantity })
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    } else {
+                        return response.text();
+                    }
+                })
+                .then(data => {
+                    const responseContainer = document.querySelector(".response-container");
+                    responseContainer.innerHTML = `<p>${data}</p>`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    });
+</script>

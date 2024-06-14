@@ -1,0 +1,33 @@
+.form-menu{
+    display: block;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 70%;
+}
+.minus,.plus{
+    width: 16.5%;
+}
+.border{
+    padding: 25px;
+    width: 100%;
+}
+.count{
+    width: 40%;
+    text-align: center;
+}
+.add-to-cart{
+    width: 100%;
+}
+.minus,.plus,.count{
+    margin-bottom: 3%;
+}
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 90%;
+    gap: 12px;
+    margin-top: 3%;
+    margin-left: 6%;
+    margin-bottom: 6%;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarabele Bakery Supply</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/brands.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Josefin+Sans:300,400,700">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
+    
+    
+</head>
+<body>
+    <div class="boxed-page">
+		<nav id="navbar-header" class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" href="#">
+            <img src="img/logo clarabele_png.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="lnr lnr-menu"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <a class="navbar-brand navbar-brand-center align-items-center only-desktop" href="#">
+                <img src="img/logo clarabele_png.png" alt="" >
+                </a>
+            
+            <ul class="navbar-nav d-flex justify-content-between">
+                <div class="d-flex flex-lg-row flex-column">
+                    
+                </div>
+                <div class="d-flex flex-lg-row flex-column">
+                    
+                    <li class="nav-item">
+                        <a class="btn btn-sign btn-shadow btn-lg" href="signin.html" role="button">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sign btn-shadow btn-lg" href="index.html" role="button">Home</a>
+                    </li>
+                </div>
+            </ul>
+        </ul>
+            
+        </div>
+    </div>
+</nav>
+<hr width="90%">
+<center>
+    <form action="signup.php" method="post" class="form-signup">
+        <h2>Register</h2>
+        <input type="text" name="mobile_or_email" placeholder="Phone Mobile or E-Mail" class="input-users" required>
+        <input type="text" name="full_name" placeholder="Full Name" class="input-users" required>
+        <input type="text" name="alamat" placeholder="Alamat" class="input-users" required>
+        <input type="text" name="username" placeholder="Username" class="input-users" required>
+        <input type="password" name="password" placeholder="Password" class="input-users" required>
+        <button class="btn-regist">Register</button>
+        <div class="login-regist">have an account?<a href="signin.php" class="a-signin">Sign In</a></div>
+        <?php if (!empty($success_message)): ?>
+        <p style="color: #f14242; font-size:14px;"><?php echo $success_message; ?></p>
+        <?php endif; ?>
+     <?php if (!empty($error_message)): ?>
+        <p style="color: #000; font-size:14px;"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+    </form>
+    </center>
+    
+
+</body>
+</html>
